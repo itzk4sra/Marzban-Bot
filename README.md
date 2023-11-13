@@ -13,7 +13,7 @@ pip install discord
 pip install marzpy
 ```
 
-## Add Plan for Create Server
+## Add Plan for Create Server Command
 ```python
 if Data is not None:
     if Data == "plan1" or Data == "Plan1":
@@ -34,7 +34,7 @@ if Data is not None:
 else:
     bytes = 0
 ```
-### Replace this with 
+### Code this with 
 ```python
 if Data is not None:
         gigabytes = float(Data)
