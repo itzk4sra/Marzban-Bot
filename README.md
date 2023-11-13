@@ -1,7 +1,10 @@
 # Marzban-Bot
-A Python Discord bot that helps you easily use [Marzban](https://github.com/Gozargah/Marzban)'s Panel
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/Imk4sra/Marzban-Bot)](https://github.com/Imk4sra/Marzban-Bot/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Imk4sra/Marzban-Bot)](https://github.com/Imk4sra/Marzban-Bot/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Imk4sra/Marzban-Bot)](https://github.com/Imk4sra/Marzban-Bot/network)
 
-
+A Python Discord bot that simplifies the usage of [Marzban](https://github.com/Gozargah/Marzban)'s Panel.
 
 ## Requirements
 ### Install uuid 
