@@ -1,6 +1,7 @@
 import os
 import time
 import uuid
+import qrcode
 import discord
 from discord.ext import commands
 from marzpy import Marzban
@@ -35,6 +36,10 @@ def gigabytes_to_bytes(gigabytes):
     bytes_in_a_gb = 1024**3
     bytes_result = gigabytes * bytes_in_a_gb
     return bytes_result
+
+class Buttons(discord.ui.View):
+    def __init__(self, *, timeout=180):
+        super().__init__(timeout=timeout)
 
 
 @client.command()
@@ -231,11 +236,15 @@ async def CreateUser(ctx, text, Data=None):
             seconds_in_a_day = 86400
             
             if Data is not None:
-                    gigabytes = float(Data)
-                    bytes = gigabytes_to_bytes(gigabytes)
+                gigabytes = float(Data)
+                bytes = gigabytes_to_bytes(gigabytes)
             else:
                 bytes = 0
-            
+
+            img = qrcode.make(result.links[0])
+            type(img)
+            img.save("config_qrcode.png")
+
             user = User(
                 username=text,
                 proxies={
@@ -252,11 +261,18 @@ async def CreateUser(ctx, text, Data=None):
 
             Embed = discord.Embed(
                 title = "**Marzban Bot**",
-                description=f"**Account Created\nSub Link:\n```{result.subscription_url}```\nConfig Link:\n```{result.links}```**",
+                description=f"**Account Created\nSub Link:\n```{result.subscription_url}```\nConfig Link:\n```{result.links[0]}```**",
                 color= Config.s_Color
             )
+            Embed.set_thumbnail('attachment://config_qrcode.png')
             Embed.set_footer(text="Marzpy Bot By Imk4sra")
-            await ctx.reply(embed=Embed)
+
+            view=Buttons()
+            view.add_item(discord.ui.Button(label="Creator Github",style=discord.ButtonStyle.link,url="https://github.com/imk4sra"))
+            view.add_item(discord.ui.Button(label="Support Server",style=discord.ButtonStyle.link,url="https://discord.gg/52hz"))
+            
+            await ctx.reply(embed=Embed, file=discord.File("data/config_qrcode.png"),view=view)
+
         else:
             Not_Embed = discord.Embed(
                 title = "**Marzban Bot**",
@@ -273,9 +289,10 @@ async def CreateUser(ctx, text, Data=None):
         await ctx.reply(embed=Not_Embed)       
 
 
-class Buttons(discord.ui.View):
-    def __init__(self, *, timeout=180):
-        super().__init__(timeout=timeout)
+
+
+
+
 
 @client.command()
 async def helpme(ctx):
