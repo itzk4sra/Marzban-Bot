@@ -21,11 +21,6 @@ pip install marzpy
 ```
 <div align="center">
   <p>
-    <a href="https://opensource.org/licenses/MIT">
-      <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
-    </a>
-  </p>
-  <p>
     <sub>© 2023 Imk4sra</sub>
   </p>
 </div>
