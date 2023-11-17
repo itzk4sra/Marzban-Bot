@@ -241,9 +241,6 @@ async def CreateUser(ctx, text, Data=None):
             else:
                 bytes = 0
 
-            img = qrcode.make(result.links[0])
-            type(img)
-            img.save("config_qrcode.png")
 
             user = User(
                 username=text,
@@ -259,6 +256,10 @@ async def CreateUser(ctx, text, Data=None):
             result = panel.add_user(user=user, token=mytoken) 
 
 
+            img = qrcode.make(result.links[0])
+            type(img)
+            img.save("config_qrcode.png")
+            
             Embed = discord.Embed(
                 title = "**Marzban Bot**",
                 description=f"**Account Created\nSub Link:\n```{result.subscription_url}```\nConfig Link:\n```{result.links[0]}```**",
